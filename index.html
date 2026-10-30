@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Escuelas de Glew · Streaming/marketing</title>
+<meta name="description" content="Portal de la Escuela Secundaria N.º 7, el CEC N.º 802 y el Jardín N.º 909 de Glew, Almirante Brown.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Nunito:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="icon" href="logo.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#inicio"><img class="brand-logo" src="logo.png" alt=""><span>Escuelas de Glew</span></a>
+  <nav id="nav" aria-label="Principal"></nav>
+</header>
+
+<main>
+  <section id="inicio" class="hero">
+    <div class="hero-text">
+      <h1>Tres escuelas, una misma cuadra de historias.</h1>
+      <p>Escuelas y secundarias educativas de San Martín 663, Barrio Parque Roma, Glew. Entrá a cada escuela, mirá las transmisiones en vivo y seguí las novedades, ademas de comentar en tiempo real.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#escuelas">Ver las escuelas</a>
+        <a class="btn ghost" href="#streaming">Ir a transmisiones</a>
+      </div>
+    </div>
+    <div class="hero-art"><img src="logo.png" alt="Logo de Escuelas de Glew: dos globos de diálogo y un birrete"></div>
+  </section>
+
+  <section id="escuelas" class="schools">
+    <h2>Elegí tu escuela</h2>
+    <div id="schoolList"></div>
+  </section>
+
+  <section id="streaming" class="stream">
+    <h2>Streaming escolar</h2>
+    <p class="lead">Actos, muestras y clases abiertas. Elegí un canal para ver el reproductor.</p>
+    <div class="stream-box">
+      <div class="stream-main">
+        <div class="tabs" id="streamTabs" role="tablist"></div>
+        <div class="player" id="player"></div>
+      </div>
+      <aside class="chat" aria-label="Chat de la transmisión">
+        <div class="chat-in">
+          <div class="chat-head"><strong id="chatTitle">Chat</strong><span id="chatStatus" class="chat-status">conectando…</span></div>
+          <div class="chat-log" id="chatLog" role="log" aria-live="polite"></div>
+          <button class="chat-new" id="chatNew" type="button" hidden>Mensajes nuevos ↓</button>
+          <div class="emotes" id="emotes"></div>
+          <form class="chat-form" id="chatForm" autocomplete="off">
+            <input id="chatName" maxlength="16" placeholder="Tu nombre" aria-label="Tu nombre">
+            <div class="chat-row">
+              <input id="chatMsg" maxlength="200" placeholder="Enviar un mensaje" aria-label="Mensaje">
+              <button class="btn" type="submit">Chatear</button>
+            </div>
+            <small id="chatHint">Sé respetuoso. Máx. 200 caracteres.</small>
+          </form>
+        </div>
+      </aside>
+    </div>
+
+    <details class="broadcast" id="bcPanel">
+      <summary>Panel para transmitir (solo personal de la escuela)</summary>
+      <div class="bc-lock" id="bcLock">
+        <input id="bcPass" type="password" placeholder="Clave de transmisión" aria-label="Clave de transmisión">
+        <button class="btn" id="bcUnlock" type="button">Entrar</button>
+        <p id="bcErr" role="alert"></p>
+      </div>
+      <div class="bc-ctrl" id="bcCtrl" hidden>
+        <p>Vas a transmitir como <strong id="bcSchool"></strong>. Para cambiar de escuela, elegila en las pestañas antes de empezar.</p>
+        <label><input type="radio" name="bcSrc" value="cam" checked> Cámara y micrófono</label>
+        <label><input type="radio" name="bcSrc" value="screen"> Pantalla (con tu micrófono)</label>
+        <div class="bc-actions">
+          <button class="btn" id="bcStart" type="button">Empezar transmisión</button>
+          <button class="btn" id="bcStop" type="button" hidden>Terminar transmisión</button>
+        </div>
+        <p id="bcInfo" aria-live="polite"></p>
+      </div>
+    </details>
+  </section>
+
+  <section id="marketing" class="marketing">
+    <h2>Laboratorio de marketing</h2>
+    <p class="lead">Espacio de práctica: armá un posteo para la escuela y copialo.</p>
+    <div class="lab">
+      <label>Escuela
+        <select id="labSchool"></select>
+      </label>
+      <label>Tipo de publicación
+        <select id="labType">
+          <option value="acto">Acto escolar</option>
+          <option value="inscripcion">Inscripción abierta</option>
+          <option value="clase">Clase abierta</option>
+        </select>
+      </label>
+      <label>Fecha y hora
+        <input id="labDate" type="text" placeholder="Ej: viernes 14 a las 18 h">
+      </label>
+      <button class="btn" id="labGo" type="button">Generar posteo</button>
+      <textarea id="labOut" rows="6" readonly placeholder="Acá aparece el texto del posteo."></textarea>
+      <button class="btn ghost" id="labCopy" type="button">Copiar texto</button>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p>San Martín 663, Barrio Parque Roma, Glew, Almirante Brown, Buenos Aires.</p>
+  <p>Sitio de práctica de marketing y streaming.<code>script.js</code>.</p> 
+</footer>
+<script src="script.js"></script>
+</body>
+</html>
